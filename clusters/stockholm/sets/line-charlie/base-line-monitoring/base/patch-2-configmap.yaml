@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: patch-2-cm
+  labels:
+    environment: production
+    app: nginx
+  annotations:
+    color: red
+data:
+  key2: value2

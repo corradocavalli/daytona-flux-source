@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: patch-1-cm
+  labels:
+    environment: test
+    app: busybox
+  annotations:
+    color: blue
+data:
+  key1: value1

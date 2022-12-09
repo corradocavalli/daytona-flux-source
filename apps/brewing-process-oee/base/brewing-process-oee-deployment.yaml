@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brewing-process-oee
+  labels:
+    app: brewing-process-oee
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: brewing-process-oee-module
+  template:
+    metadata:
+      labels:
+        app: brewing-process-oee-module
+    spec:
+     containers:
+      - name: oee-store
+        image: nginx:latest
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
+      - name: oee-ui
+        image: nginx:latest
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
