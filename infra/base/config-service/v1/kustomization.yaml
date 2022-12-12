@@ -7,6 +7,5 @@ resources:
 - namespace.yaml
 - service-account.yaml
 - service.yaml
-- default-git-password-sealedsecret.yaml
 
 namespace: config-service
