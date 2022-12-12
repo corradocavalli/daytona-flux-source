@@ -1,0 +1,6 @@
+resources:
+- namespace.yaml
+- patch-1-configmap.yaml
+- patch-2-configmap.yaml
+
+

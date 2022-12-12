@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-service
+spec:
+  selector:
+    matchLabels:
+      app: config-service
+  template:
+    metadata:
+      labels:
+        app: config-service
+        v: '1'
+    spec:
+      containers:
+      - name: config-service
+        image: moonshot.azurecr.io/daytonaconfigservice-testmode:latest
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        env:
+          - name: ASPNETCORE_URLS
+            value: http://0.0.0.0:80
+          - name: GIT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: config-service-git-password
+                key: git-password
+                optional: false
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            memory: "500Mi"
+            cpu: "300m"
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        volumeMounts:
+        - mountPath: /app/Configuration
+          name: config
+      imagePullSecrets:
+      - name: regcred
+      volumes:
+      - name: config
+        configMap:
+          name: config-service-config
+          items:
+          - key: "ConfigServiceOptions.yaml"
+            path: "ConfigServiceOptions.yaml"

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: base-line-monitoring
+  labels:
+    app: base-line-monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: base-line-monitoring
+  template:
+    metadata:
+      labels:
+        app: base-line-monitoring
+    spec:
+      containers:
+      - name: injector
+        image: nginx:latest
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
+        volumeMounts:
+        - mountPath: /configuration
+          name: config
+      - name: store
+        image: nginx:latest
+        resources:
+          requests:
+            cpu: "100m"
+          limits:
+            memory: "300Mi"
+            cpu: "300m"
+      volumes:
+      - name: config
+        configMap:
+          name: configuration-ipaddresses

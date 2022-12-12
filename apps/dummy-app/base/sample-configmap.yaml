@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configuration-sample
+  annotations:
+data:
+    sample-ipaddress.json: |
+      {
+        "ipaddresses": [
+          "127.0.0.l"
+        ]
+      }

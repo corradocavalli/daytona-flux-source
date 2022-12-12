@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-service-config
+data:
+  ConfigServiceOptions.yaml: |-
+    use_proxy_mode: false
+    proxy_host: 'http://localhost:5000'
+    test_mode: End2EndTests
+    clusters_in_scope:
+    - 'stockholm'
+    git_options:
+      url: 'http://gitea-http.gitea:3000/gitea-admin/daytona.git'
+      mail: 'gitea@local.domain'
+      user: 'gitea-admin'
+      branch: 'flux'
+      persistence_path: '/tmp'
