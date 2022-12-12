@@ -1,0 +1,4 @@
+resources:
+- ./dummy-app/2205.1
+
+namePrefix: charlie-

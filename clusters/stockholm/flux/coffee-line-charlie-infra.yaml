@@ -11,5 +11,7 @@ spec:
     namespace: flux-workspace
   path: ./clusters/stockholm/sets/coffee-line-charlie
   prune: true
+  decryption:
+    provider: sops
   dependsOn:
   - name: stockholm-infra

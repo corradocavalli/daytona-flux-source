@@ -1,0 +1,4 @@
+resources:
+- dummy-deployment.yaml
+- configuration-ipaddresses-configmap.yaml
+- sample-configmap.yaml

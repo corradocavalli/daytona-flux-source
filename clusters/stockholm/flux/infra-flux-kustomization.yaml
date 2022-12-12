@@ -11,3 +11,5 @@ spec:
     namespace: flux-workspace
   path: ./clusters/stockholm/infra
   prune: true
+  decryption:
+    provider: sops
