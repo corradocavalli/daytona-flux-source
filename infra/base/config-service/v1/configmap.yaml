@@ -9,6 +9,7 @@ data:
     test_mode: End2EndTests
     clusters_in_scope:
     - 'stockholm'
+    flux_git_source_ref_name: 'flux-workspace/source-repository'
     git_options:
       url: 'http://gitea-http.gitea:3000/gitea-admin/daytona.git'
       mail: 'gitea@local.domain'
