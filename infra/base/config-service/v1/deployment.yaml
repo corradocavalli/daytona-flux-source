@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: config-service
-        image: moonshot.azurecr.io/daytonaconfigservice-testmode:latest
+        image: config-service:test
         ports:
         - containerPort: 80
           name: http
