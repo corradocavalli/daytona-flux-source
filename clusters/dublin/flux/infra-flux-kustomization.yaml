@@ -2,14 +2,14 @@ apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
 metadata:
   name: dublin-infra
-  namespace: flux-workspace
+  namespace: flux-system
 spec:
   interval: 1m
   sourceRef:
     kind: GitRepository
     name: source-repository
-    namespace: flux-workspace
+    namespace: default
   path: ./clusters/dublin/infra
   prune: true
-  decryption:
-    provider: sops
+  wait: true
+  timeout: 10m
